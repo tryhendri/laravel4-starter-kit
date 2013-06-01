@@ -12,24 +12,16 @@
 Route::group(array('prefix' => 'admin'), function()
 {
 
-	# Blog Management
-	Route::group(array('prefix' => 'blogs'), function()
+	# Blog Articles Management
+	Route::group(array('prefix' => 'articles'), function()
 	{
-		Route::get('/', array('as' => 'blogs', 'uses' => 'Controllers\Admin\BlogsController@getIndex'));
-		Route::get('create', array('as' => 'create/blog', 'uses' => 'Controllers\Admin\BlogsController@getCreate'));
-		Route::post('create', 'Controllers\Admin\BlogsController@postCreate');
-
-		Route::group(array('prefix' => '{blogId}/edit'), function()
-		{
-			Route::get('/', array('as' => 'update/blog', 'uses' => 'Controllers\Admin\BlogsController@getEdit'));
-			Route::post('/', 'Controllers\Admin\BlogsController@postEdit');
-
-			Route::get('comments', 'Controllers\Admin\BlogsController@getComments');
-
-		});
-
-		Route::get('{blogId}/delete', array('as' => 'delete/blog', 'uses' => 'Controllers\Admin\BlogsController@getDelete'));
-		Route::get('{blogId}/restore', array('as' => 'restore/blog', 'uses' => 'Controllers\Admin\BlogsController@getRestore'));
+		Route::get('/', array('as' => 'articles', 'uses' => 'Controllers\Admin\ArticlesController@getIndex'));
+		Route::get('create', array('as' => 'create/blog', 'uses' => 'Controllers\Admin\ArticlesController@getCreate'));
+		Route::post('create', 'Controllers\Admin\ArticlesController@postCreate');
+		Route::get('{id}/edit', array('as' => 'update/blog', 'uses' => 'Controllers\Admin\ArticlesController@getEdit'));
+		Route::post('{id}/edit', 'Controllers\Admin\ArticlesController@postEdit');
+		Route::get('{id}/delete', array('as' => 'delete/blog', 'uses' => 'Controllers\Admin\ArticlesController@getDelete'));
+		Route::get('{id}/restore', array('as' => 'restore/blog', 'uses' => 'Controllers\Admin\ArticlesController@getRestore'));
 	});
 
 	# User Management

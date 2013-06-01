@@ -59,7 +59,17 @@
 						<div class="nav-collapse collapse">
 							<ul class="nav">
 								<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{ URL::to('admin') }}"><i class="icon-home icon-white"></i> Home</a></li>
-								<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/blogs') }}"><i class="icon-list-alt icon-white"></i> Blogs</a></li>
+
+								<li class="dropdown{{ (Request::is('admin/articles') ? ' active' : '') }}">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="{{ URL::to('admin/articles') }}">
+										<i class="icon-list-alt icon-white"></i> Articles <span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu">
+										<li{{ (Request::is('admin/articles') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/articles') }}"><i class="icon-user"></i> Articles</a></li>
+										<li{{ (Request::is('admin/articles/comments') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/articles/comments') }}"><i class="icon-user"></i> Comments</a></li>
+									</ul>
+								</li>
+
 								<li class="dropdown{{ (Request::is('admin/users*|admin/groups*') ? ' active' : '') }}">
 									<a class="dropdown-toggle" data-toggle="dropdown" href="{{ URL::to('admin/users') }}">
 										<i class="icon-user icon-white"></i> Users <span class="caret"></span>

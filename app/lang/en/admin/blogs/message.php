@@ -2,21 +2,18 @@
 
 return array(
 
-	'does_not_exist' => 'Blog post does not exist.',
+	'not_found' => 'Blog article does not exist.',
 
-	'create' => array(
-		'error'   => 'Blog post was not created, please try again.',
-		'success' => 'Blog post created successfully.'
+	'success' => array(
+		'create' => 'Blog article created successfully.'
+		'update' => 'Blog article updated successfully.'
+		'delete' => 'Blog article deleted successfully.'
 	),
 
-	'update' => array(
-		'error'   => 'Blog post was not updated, please try again',
-		'success' => 'Blog post updated successfully.'
+	'error' => array(
+		'create'   => 'Blog article was not created, please try again.',
+		'update'   => 'Blog article was not updated, please try again.',
+		'delete'   => 'Blog article was not deleted. Please try again.',
 	),
-
-	'delete' => array(
-		'error'   => 'There was an issue deleting the blog post. Please try again.',
-		'success' => 'The blog post was deleted successfully.'
-	)
 
 );
