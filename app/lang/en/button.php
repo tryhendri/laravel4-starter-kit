@@ -3,6 +3,7 @@
 return array(
 
 	'create'  => 'Create',
+	'update'  => 'Update',
 	'edit'    => 'Edit',
 	'copy'    => 'Copy',
 	'delete'  => 'Delete',

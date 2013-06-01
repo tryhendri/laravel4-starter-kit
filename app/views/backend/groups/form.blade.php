@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 @section('title')
-Group Update ::
+{{ trans("admin/groups/general.{$pageSegment}.title") }} ::
 @parent
 @stop
 
@@ -10,18 +10,18 @@ Group Update ::
 @section('content')
 <div class="page-header">
 	<h3>
-		Group Update
+		{{ trans("admin/groups/general.{$pageSegment}.title") }}
 
 		<div class="pull-right">
-			<a href="{{ route('groups') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> Back</a>
+			<a href="{{ route('groups') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> {{ trans('buttons.back') }}</a>
 		</div>
 	</h3>
 </div>
 
 <!-- Tabs -->
 <ul class="nav nav-tabs">
-	<li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
-	<li><a href="#tab-permissions" data-toggle="tab">Permissions</a></li>
+	<li class="active"><a href="#tab-general" data-toggle="tab">{{ trans('admin/groups/general.tabs.general') }}</a></li>
+	<li><a href="#tab-permissions" data-toggle="tab">{{ trans('admin/groups/general.tabs.permissions') }}</a></li>
 </ul>
 
 <form class="form-horizontal" method="post" action="" autocomplete="off">
@@ -33,10 +33,10 @@ Group Update ::
 		<!-- General tab -->
 		<div class="tab-pane active" id="tab-general">
 			<!-- Name -->
-			<div class="control-group {{ $errors->has('name') ? 'error' : '' }}">
-				<label class="control-label" for="name">Name</label>
+			<div class="control-group{{ $errors->has('name') ? ' error' : '' }}">
+				<label class="control-label" for="name">{{ trans('admin/groups/form.name') }}</label>
 				<div class="controls">
-					<input type="text" name="name" id="name" value="{{ Input::old('name', $group->name) }}" />
+					<input type="text" name="name" id="name" value="{{ Input::old('name', ! empty($group) ? $group->name : null) }}" />
 					{{ $errors->first('name', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
@@ -82,11 +82,11 @@ Group Update ::
 	<!-- Form Actions -->
 	<div class="control-group">
 		<div class="controls">
-			<a class="btn btn-link" href="{{ route('groups') }}">Cancel</a>
+			<a class="btn btn-link" href="{{ route('groups') }}">{{ trans('button.cancel') }}</a>
 
-			<button type="reset" class="btn">Reset</button>
+			<button type="reset" class="btn">{{ trans('button.reset') }}</button>
 
-			<button type="submit" class="btn btn-success">Update Group</button>
+			<button type="submit" class="btn btn-success">{{ trans('button.update') }}</button>
 		</div>
 	</div>
 </form>

@@ -168,6 +168,7 @@ class ArticlesController extends AdminController {
 				return Redirect::route('articles')->with('error', Lang::get('admin/articles/message.not_found'));
 			}
 
+			// Update the validation rules
 			$this->validationRules['slug'] = "required|unique:articles,slug,{$article->slug},slug";
 		}
 		else
@@ -194,7 +195,7 @@ class ArticlesController extends AdminController {
 		$article->meta_description = Input::get('meta-description');
 		$article->meta_keywords    = Input::get('meta-keywords');
 
-		// Was the blog article updated?
+		// Was the blog article saved?
 		if($article->save())
 		{
 			// Redirect to the new blog article page

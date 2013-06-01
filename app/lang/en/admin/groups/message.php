@@ -2,9 +2,9 @@
 
 return array(
 
-	'group_exists'        => 'Group already exists!',
-	'group_not_found'     => 'Group [:id] does not exist.',
-	'group_name_required' => 'The name field is required',
+	'group_exists'  => 'Group already exists!',
+	'not_found'     => 'Group [:id] does not exist.',
+	'name_required' => 'The name field is required',
 
 	'success' => array(
 		'create' => 'Group was successfully created.',
