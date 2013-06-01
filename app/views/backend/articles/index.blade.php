@@ -13,7 +13,7 @@ Blog Articles Management ::
 		Blog Articles Management
 
 		<div class="pull-right">
-			<a href="{{ route('create/article') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> Create</a>
+			<a href="{{ route('create/article') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
 		</div>
 	</h3>
 </div>
@@ -23,9 +23,9 @@ Blog Articles Management ::
 <table class="table table-bordered table-striped table-hover">
 	<thead>
 		<tr>
-			<th class="span6">{{ trans('admin/blogs/table.title') }}</th>
-			<th class="span2">{{ trans('admin/blogs/table.comments') }}</th>
-			<th class="span2">{{ trans('admin/blogs/table.created_at') }}</th>
+			<th class="span6">{{ trans('admin/articles/table.title') }}</th>
+			<th class="span2">{{ trans('admin/articles/table.comments') }}</th>
+			<th class="span2">{{ trans('admin/articles/table.created_at') }}</th>
 			<th class="span2">{{ trans('table.actions') }}</th>
 		</tr>
 	</thead>

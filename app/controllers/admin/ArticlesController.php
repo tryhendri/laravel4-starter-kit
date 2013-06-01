@@ -23,7 +23,7 @@ class ArticlesController extends AdminController {
 		$articles = Article::orderBy('created_at', 'DESC')->paginate();
 
 		// Show the page
-		return View::make('backend/blogs/index', compact('articles'));
+		return View::make('backend/articles/index', compact('articles'));
 	}
 
 	/**
@@ -101,15 +101,15 @@ class ArticlesController extends AdminController {
 		// Check if the blog article exists
 		if (is_null($article = Article::find($id)))
 		{
-			// Redirect to the blogs management page
-			return Redirect::to('admin/articles')->with('error', Lang::get('admin/blogs/message.not_found'));
+			// Redirect to the articles management page
+			return Redirect::to('admin/articles')->with('error', Lang::get('admin/articles/message.not_found'));
 		}
 
 		// Delete the blog article
 		$article->delete();
 
-		// Redirect to the blog posts management page
-		return Redirect::to('admin/articles')->with('success', Lang::get('admin/blogs/message.delete.success'));
+		// Redirect to the articles management page
+		return Redirect::to('admin/articles')->with('success', Lang::get('admin/articles/message.success.delete'));
 	}
 
 	/**
@@ -124,19 +124,19 @@ class ArticlesController extends AdminController {
 		// Fallback data
 		$article = null;
 
-		// Do we have the blog post id?
+		// Do we have the blog article id?
 		if ( ! is_null($id))
 		{
-			// Check if the blog post exists
+			// Check if the blog article exists
 			if (is_null($article = Article::find($id)))
 			{
-				// Redirect to the blogs management page
-				return Redirect::to('admin/articles')->with('error', Lang::get('admin/blogs/message.not_found'));
+				// Redirect to the articles management page
+				return Redirect::to('admin/articles')->with('error', Lang::get('admin/articles/message.not_found'));
 			}
 		}
 
 		// Show the page
-		return View::make('backend/blogs/form', compact('article', 'pageSegment'));
+		return View::make('backend/articles/form', compact('article', 'pageSegment'));
 	}
 
 	/**
@@ -152,8 +152,8 @@ class ArticlesController extends AdminController {
 			// Check if the blog article exists
 			if (is_null($article = Article::find($id)))
 			{
-				// Redirect to the blogs management page
-				return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/message.not_found'));
+				// Redirect to the articles management page
+				return Redirect::to('admin/articles')->with('error', Lang::get('admin/articles/message.not_found'));
 			}
 		}
 		else
@@ -186,15 +186,15 @@ class ArticlesController extends AdminController {
 		$article->meta_description = Input::get('meta-description');
 		$article->meta_keywords    = Input::get('meta-keywords');
 
-		// Was the blog post updated?
+		// Was the blog article updated?
 		if($article->save())
 		{
-			// Redirect to the new blog post page
-			return Redirect::to("admin/articles/$id/edit")->with('success', Lang::get('admin/blogs/message.update.success'));
+			// Redirect to the new blog article page
+			return Redirect::route('update/article', $id)->with('success', Lang::get('admin/articles/message.success.update'));
 		}
 
-		// Redirect to the blogs post management page
-		return Redirect::to("admin/articles/$id/edit")->with('error', Lang::get('admin/blogs/message.update.error'));
+		// Redirect to the articles management page
+		return Redirect::route('update/article', $id)->with('error', Lang::get('admin/articles/message.error.update'));
 	}
 
 }
