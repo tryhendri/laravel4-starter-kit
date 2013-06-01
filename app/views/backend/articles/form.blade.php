@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
+{{ trans("admin/articles/general.{$pageSegment}.title") }} ::
 @parent
 @stop
 
@@ -10,7 +10,7 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 @section('content')
 <div class="page-header">
 	<h3>
-		Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }}
+		{{ trans("admin/articles/general.{$pageSegment}.title") }}
 
 		<div class="pull-right">
 			<a href="{{ route('articles') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> {{ trans('button.back') }}</a>
@@ -20,9 +20,9 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 
 <!-- Tabs -->
 <ul class="nav nav-tabs">
-	<li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
-	<li><a href="#tab-meta-data" data-toggle="tab">Meta Data</a></li>
-	<li><a href="#tab-comments" data-toggle="tab">Comments</a></li>
+	<li class="active"><a href="#tab-general" data-toggle="tab">{{ trans('admin/articles/general.tabs.general') }}</a></li>
+	<li><a href="#tab-meta-data" data-toggle="tab">{{ trans('admin/articles/general.tabs.metadata') }}</a></li>
+	<li><a href="#tab-comments" data-toggle="tab">{{ trans('admin/articles/general.tabs.comments') }}</a></li>
 </ul>
 
 <form class="form-horizontal" method="post" action="" autocomplete="off">

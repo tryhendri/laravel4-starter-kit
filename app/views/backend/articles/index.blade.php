@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Blog Articles Management ::
+{{ trans("admin/articles/general.title") }}
 @parent
 @stop
 
@@ -10,7 +10,7 @@ Blog Articles Management ::
 @section('content')
 <div class="page-header">
 	<h3>
-		Blog Articles Management
+		{{ trans("admin/articles/general.title") }}
 
 		<div class="pull-right">
 			<a href="{{ route('create/article') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
