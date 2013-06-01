@@ -1,9 +1,9 @@
 <?php
 
-class Post extends Eloquent {
+class Article extends Eloquent {
 
 	/**
-	 * Deletes a blog post and all the associated comments.
+	 * Deletes a blog article and all the associated comments.
 	 *
 	 * @return bool
 	 */
@@ -12,12 +12,12 @@ class Post extends Eloquent {
 		// Delete the comments
 		$this->comments()->delete();
 
-		// Delete the blog post
+		// Delete the blog article
 		return parent::delete();
 	}
 
 	/**
-	 * Returns a formatted post content entry, this ensures that
+	 * Returns a formatted article content entry, this ensures that
 	 * line breaks are returned.
 	 *
 	 * @return string
@@ -28,7 +28,7 @@ class Post extends Eloquent {
 	}
 
 	/**
-	 * Return the post's author.
+	 * Return the article's author.
 	 *
 	 * @return User
 	 */
@@ -38,7 +38,7 @@ class Post extends Eloquent {
 	}
 
 	/**
-	 * Return how many comments this post has.
+	 * Return how many comments this article has.
 	 *
 	 * @return array
 	 */
@@ -48,17 +48,17 @@ class Post extends Eloquent {
 	}
 
 	/**
-	 * Return the URL to the post.
+	 * Return the URL to the article.
 	 *
 	 * @return string
 	 */
 	public function url()
 	{
-		return URL::route('view-post', $this->slug);
+		return URL::route('view-article', $this->slug);
 	}
 
 	/**
-	 * Return the post thumbnail image url.
+	 * Return the article thumbnail image url.
 	 *
 	 * @return string
 	 */

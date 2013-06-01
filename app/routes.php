@@ -16,12 +16,19 @@ Route::group(array('prefix' => 'admin'), function()
 	Route::group(array('prefix' => 'articles'), function()
 	{
 		Route::get('/', array('as' => 'articles', 'uses' => 'Controllers\Admin\ArticlesController@getIndex'));
-		Route::get('create', array('as' => 'create/blog', 'uses' => 'Controllers\Admin\ArticlesController@getCreate'));
+
+		Route::get('create', array('as' => 'create/article', 'uses' => 'Controllers\Admin\ArticlesController@getCreate'));
 		Route::post('create', 'Controllers\Admin\ArticlesController@postCreate');
-		Route::get('{id}/edit', array('as' => 'update/blog', 'uses' => 'Controllers\Admin\ArticlesController@getEdit'));
+
+		Route::get('{id}/edit', array('as' => 'update/article', 'uses' => 'Controllers\Admin\ArticlesController@getEdit'));
 		Route::post('{id}/edit', 'Controllers\Admin\ArticlesController@postEdit');
-		Route::get('{id}/delete', array('as' => 'delete/blog', 'uses' => 'Controllers\Admin\ArticlesController@getDelete'));
-		Route::get('{id}/restore', array('as' => 'restore/blog', 'uses' => 'Controllers\Admin\ArticlesController@getRestore'));
+
+		Route::get('{id}/copy', array('as' => 'copy/article', 'uses' => 'Controllers\Admin\ArticlesController@getEdit'));
+		Route::post('{id}/copy', 'Controllers\Admin\ArticlesController@postEdit');
+
+		Route::get('{id}/delete', array('as' => 'delete/article', 'uses' => 'Controllers\Admin\ArticlesController@getDelete'));
+
+		Route::get('{id}/restore', array('as' => 'restore/article', 'uses' => 'Controllers\Admin\ArticlesController@getRestore'));
 	});
 
 	# User Management

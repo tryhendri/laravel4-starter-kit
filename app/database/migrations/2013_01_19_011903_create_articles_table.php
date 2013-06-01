@@ -11,8 +11,8 @@ class CreatePostsTable extends Migration {
 	 */
 	public function up()
 	{
-		// Create the `Posts` table
-		Schema::create('posts', function($table)
+		// Create the `Articles` table
+		Schema::create('articles', function($table)
 		{
 			$table->increments('id')->unsigned();
 			$table->integer('user_id')->unsigned();
@@ -22,6 +22,8 @@ class CreatePostsTable extends Migration {
 			$table->string('meta_title');
 			$table->string('meta_description');
 			$table->string('meta_keywords');
+
+			$table->engine = 'InnoDB';
 			$table->timestamps();
 		});
 	}
@@ -33,8 +35,8 @@ class CreatePostsTable extends Migration {
 	 */
 	public function down()
 	{
-		// Delete the `Posts` table
-		Schema::drop('posts');
+		// Delete the `Articles` table
+		Schema::drop('articles');
 	}
 
 }

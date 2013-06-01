@@ -13,36 +13,37 @@ Blog Articles Management ::
 		Blog Articles Management
 
 		<div class="pull-right">
-			<a href="{{ route('create/blog') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> Create</a>
+			<a href="{{ route('create/article') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> Create</a>
 		</div>
 	</h3>
 </div>
 
-{{ $posts->links() }}
+{{ $articles->links() }}
 
 <table class="table table-bordered table-striped table-hover">
 	<thead>
 		<tr>
-			<th class="span6">@lang('admin/blogs/table.title')</th>
-			<th class="span2">@lang('admin/blogs/table.comments')</th>
-			<th class="span2">@lang('admin/blogs/table.created_at')</th>
-			<th class="span2">@lang('table.actions')</th>
+			<th class="span6">{{ trans('admin/blogs/table.title') }}</th>
+			<th class="span2">{{ trans('admin/blogs/table.comments') }}</th>
+			<th class="span2">{{ trans('admin/blogs/table.created_at') }}</th>
+			<th class="span2">{{ trans('table.actions') }}</th>
 		</tr>
 	</thead>
 	<tbody>
-		@foreach ($posts as $post)
+		@foreach ($articles as $article)
 		<tr>
-			<td>{{ $post->title }}</td>
-			<td>{{ $post->comments()->count() }}</td>
-			<td>{{ $post->created_at->diffForHumans() }}</td>
+			<td>{{ $article->title }}</td>
+			<td>{{ $article->comments->count() }}</td>
+			<td>{{ $article->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('update/blog', $post->id) }}" class="btn btn-mini">@lang('button.edit')</a>
-				<a href="{{ route('delete/blog', $post->id) }}" class="btn btn-mini btn-danger">@lang('button.delete')</a>
+				<a href="{{ route('update/article', $article->id) }}" class="btn btn-mini">{{ trans('button.edit') }}</a>
+				<a href="{{ route('copy/article', $article->id) }}" class="btn btn-mini btn-info">{{ trans('button.copy') }}</a>
+				<a href="{{ route('delete/article', $article->id) }}" class="btn btn-mini btn-danger">{{ trans('button.delete') }}</a>
 			</td>
 		</tr>
 		@endforeach
 	</tbody>
 </table>
 
-{{ $posts->links() }}
+{{ $articles->links() }}
 @stop

@@ -5,9 +5,9 @@ return array(
 	'not_found' => 'Blog article does not exist.',
 
 	'success' => array(
-		'create' => 'Blog article created successfully.'
-		'update' => 'Blog article updated successfully.'
-		'delete' => 'Blog article deleted successfully.'
+		'create' => 'Blog article created successfully.',
+		'update' => 'Blog article updated successfully.',
+		'delete' => 'Blog article deleted successfully.',
 	),
 
 	'error' => array(

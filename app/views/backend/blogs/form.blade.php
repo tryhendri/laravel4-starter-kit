@@ -13,7 +13,7 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 		Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }}
 
 		<div class="pull-right">
-			<a href="{{ route('blogs') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> Back</a>
+			<a href="{{ route('articles') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> Back</a>
 		</div>
 	</h3>
 </div>
@@ -37,7 +37,7 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 			<div class="control-group {{ $errors->has('title') ? 'error' : '' }}">
 				<label class="control-label" for="title">Post Title</label>
 				<div class="controls">
-					<input type="text" name="title" id="title" value="{{{ Input::old('title', ! empty($post) ? $post->title : null) }}}" />
+					<input type="text" name="title" id="title" value="{{{ Input::old('title', ! empty($article) ? $article->title : null) }}}" />
 					{{ $errors->first('title', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
@@ -50,7 +50,7 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 						<span class="add-on">
 							{{ str_finish(URL::to('/'), '/') }}
 						</span>
-						<input class="span6" type="text" name="slug" id="slug" value="{{{ Input::old('slug', ! empty($post) ? $post->slug : null) }}}" />
+						<input class="span6" type="text" name="slug" id="slug" value="{{{ Input::old('slug', ! empty($article) ? $article->slug : null) }}}" />
 					</div>
 				</div>
 			</div>
@@ -59,7 +59,7 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 			<div class="control-group {{ $errors->has('content') ? 'error' : '' }}">
 				<label class="control-label" for="content">Content</label>
 				<div class="controls">
-					<textarea class="span10" name="content" value="content" rows="10">{{{ Input::old('content', ! empty($post) ? $post->content : null) }}}</textarea>
+					<textarea class="span10" name="content" value="content" rows="10">{{{ Input::old('content', ! empty($article) ? $article->content : null) }}}</textarea>
 					{{ $errors->first('content', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
@@ -71,7 +71,7 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 			<div class="control-group {{ $errors->has('meta-title') ? 'error' : '' }}">
 				<label class="control-label" for="meta-title">Meta Title</label>
 				<div class="controls">
-					<input class="span10" type="text" name="meta-title" id="meta-title" value="{{{ Input::old('meta-title', ! empty($post) ? $post->meta_title : null) }}}" />
+					<input class="span10" type="text" name="meta-title" id="meta-title" value="{{{ Input::old('meta-title', ! empty($article) ? $article->meta_title : null) }}}" />
 					{{ $errors->first('meta-title', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
@@ -80,7 +80,7 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 			<div class="control-group {{ $errors->has('meta-description') ? 'error' : '' }}">
 				<label class="control-label" for="meta-description">Meta Description</label>
 				<div class="controls">
-					<input class="span10" type="text" name="meta-description" id="meta-description" value="{{{ Input::old('meta-description', ! empty($post) ? $post->meta_description : null) }}}" />
+					<input class="span10" type="text" name="meta-description" id="meta-description" value="{{{ Input::old('meta-description', ! empty($article) ? $article->meta_description : null) }}}" />
 					{{ $errors->first('meta-description', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
@@ -89,7 +89,7 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 			<div class="control-group {{ $errors->has('meta-keywords') ? 'error' : '' }}">
 				<label class="control-label" for="meta-keywords">Meta Keywords</label>
 				<div class="controls">
-					<input class="span10" type="text" name="meta-keywords" id="meta-keywords" value="{{{ Input::old('meta-keywords', ! empty($post) ? $post->meta_keywords : null) }}}" />
+					<input class="span10" type="text" name="meta-keywords" id="meta-keywords" value="{{{ Input::old('meta-keywords', ! empty($article) ? $article->meta_keywords : null) }}}" />
 					{{ $errors->first('meta-keywords', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
@@ -99,7 +99,7 @@ Blog Post {{ $pageSegment === 'update' ? 'Update' : 'Create' }} ::
 	<!-- Form Actions -->
 	<div class="control-group">
 		<div class="controls">
-			<a class="btn btn-link" href="{{ route('blogs') }}">Cancel</a>
+			<a class="btn btn-link" href="{{ route('articles') }}">Cancel</a>
 
 			<button type="reset" class="btn">Reset</button>
 

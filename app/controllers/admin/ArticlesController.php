@@ -1,9 +1,9 @@
 <?php namespace Controllers\Admin;
 
 use AdminController;
+use Article;
 use Input;
 use Lang;
-use Post;
 use Redirect;
 use Sentry;
 use Str;
@@ -13,17 +13,17 @@ use View;
 class ArticlesController extends AdminController {
 
 	/**
-	 * Show a list of all the blog posts.
+	 * Show a list of all the blog articles.
 	 *
 	 * @return View
 	 */
 	public function getIndex()
 	{
-		// Grab all the blog posts
-		$posts = Post::orderBy('created_at', 'DESC')->paginate();
+		// Grab all the blog articles
+		$articles = Article::orderBy('created_at', 'DESC')->paginate();
 
 		// Show the page
-		return View::make('backend/blogs/index', compact('posts'));
+		return View::make('backend/blogs/index', compact('articles'));
 	}
 
 	/**
@@ -91,25 +91,25 @@ class ArticlesController extends AdminController {
 	}
 
 	/**
-	 * Delete the given blog post.
+	 * Delete the given blog article.
 	 *
 	 * @param  int  $id
 	 * @return Redirect
 	 */
 	public function getDelete($id)
 	{
-		// Check if the blog post exists
-		if (is_null($post = Post::find($id)))
+		// Check if the blog article exists
+		if (is_null($article = Article::find($id)))
 		{
 			// Redirect to the blogs management page
-			return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/message.not_found'));
+			return Redirect::to('admin/articles')->with('error', Lang::get('admin/blogs/message.not_found'));
 		}
 
-		// Delete the blog post
-		$post->delete();
+		// Delete the blog article
+		$article->delete();
 
 		// Redirect to the blog posts management page
-		return Redirect::to('admin/blogs')->with('success', Lang::get('admin/blogs/message.delete.success'));
+		return Redirect::to('admin/articles')->with('success', Lang::get('admin/blogs/message.delete.success'));
 	}
 
 	/**
@@ -122,21 +122,21 @@ class ArticlesController extends AdminController {
 	protected function showForm($id = null, $pageSegment = null)
 	{
 		// Fallback data
-		$post = null;
+		$article = null;
 
 		// Do we have the blog post id?
 		if ( ! is_null($id))
 		{
 			// Check if the blog post exists
-			if (is_null($post = Post::find($id)))
+			if (is_null($article = Article::find($id)))
 			{
 				// Redirect to the blogs management page
-				return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/message.not_found'));
+				return Redirect::to('admin/articles')->with('error', Lang::get('admin/blogs/message.not_found'));
 			}
 		}
 
 		// Show the page
-		return View::make('backend/blogs/form', compact('post', 'pageSegment'));
+		return View::make('backend/blogs/form', compact('article', 'pageSegment'));
 	}
 
 	/**
@@ -147,11 +147,10 @@ class ArticlesController extends AdminController {
 	 */
 	protected function processForm($id = null)
 	{
-
 		if ( ! is_null($id))
 		{
-			// Check if the blog post exists
-			if (is_null($post = Post::find($id)))
+			// Check if the blog article exists
+			if (is_null($article = Article::find($id)))
 			{
 				// Redirect to the blogs management page
 				return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/message.not_found'));
@@ -159,8 +158,8 @@ class ArticlesController extends AdminController {
 		}
 		else
 		{
-			// Create a new blog post
-			$post = new Post;
+			// Create a new blog article
+			$article = new Article;
 		}
 
 		// Declare the rules for the form validation
@@ -179,23 +178,23 @@ class ArticlesController extends AdminController {
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
 
-		// Update the blog post data
-		$post->title            = Input::get('title');
-		$post->slug             = Str::slug(Input::get('title'));
-		$post->content          = Input::get('content');
-		$post->meta_title       = Input::get('meta-title');
-		$post->meta_description = Input::get('meta-description');
-		$post->meta_keywords    = Input::get('meta-keywords');
+		// Update the blog article data
+		$article->title            = Input::get('title');
+		$article->slug             = Str::slug(Input::get('title'));
+		$article->content          = Input::get('content');
+		$article->meta_title       = Input::get('meta-title');
+		$article->meta_description = Input::get('meta-description');
+		$article->meta_keywords    = Input::get('meta-keywords');
 
 		// Was the blog post updated?
-		if($post->save())
+		if($article->save())
 		{
 			// Redirect to the new blog post page
-			return Redirect::to("admin/blogs/$id/edit")->with('success', Lang::get('admin/blogs/message.update.success'));
+			return Redirect::to("admin/articles/$id/edit")->with('success', Lang::get('admin/blogs/message.update.success'));
 		}
 
 		// Redirect to the blogs post management page
-		return Redirect::to("admin/blogs/$id/edit")->with('error', Lang::get('admin/blogs/message.update.error'));
+		return Redirect::to("admin/articles/$id/edit")->with('error', Lang::get('admin/blogs/message.update.error'));
 	}
 
 }

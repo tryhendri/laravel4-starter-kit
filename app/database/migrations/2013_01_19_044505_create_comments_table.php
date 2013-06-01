@@ -16,9 +16,11 @@ class CreateCommentsTable extends Migration {
 		{
 			$table->increments('id')->unsigned();
 			$table->integer('parent_id')->unsigned();
-			$table->integer('post_id')->unsigned();
+			$table->integer('article_id')->unsigned();
 			$table->integer('user_id')->unsigned();
 			$table->text('content');
+
+			$table->engine = 'InnoDB';
 			$table->timestamps();
 		});
 	}
