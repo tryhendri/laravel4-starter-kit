@@ -10,7 +10,7 @@ class BlogController extends BaseController {
 	public function getIndex()
 	{
 		// Get all the blog posts
-		$posts = Post::with(array(
+		$articles = Article::with(array(
 			'author' => function($query)
 			{
 				$query->withTrashed();
@@ -18,7 +18,7 @@ class BlogController extends BaseController {
 		))->orderBy('created_at', 'DESC')->paginate();
 
 		// Show the page
-		return View::make('frontend/blog/index', compact('posts'));
+		return View::make('frontend/blog/index', compact('articles'));
 	}
 
 	/**
@@ -31,7 +31,7 @@ class BlogController extends BaseController {
 	public function getView($slug)
 	{
 		// Get this blog post data
-		$post = Post::with(array(
+		$post = Article::with(array(
 			'author' => function($query)
 			{
 				$query->withTrashed();

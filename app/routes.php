@@ -145,7 +145,7 @@ Route::get('about-us', function()
 Route::get('contact-us', array('as' => 'contact-us', 'uses' => 'ContactUsController@getIndex'));
 Route::post('contact-us', 'ContactUsController@postIndex');
 
-Route::get('blog/{postSlug}', array('as' => 'view-post', 'uses' => 'BlogController@getView'));
-Route::post('blog/{postSlug}', 'BlogController@postView');
+Route::get('article/{postSlug}', array('as' => 'view-article', 'uses' => 'BlogController@getView'));
+Route::post('article/{postSlug}', 'BlogController@postView');
 
 Route::get('/', array('as' => 'home', 'uses' => 'BlogController@getIndex'));

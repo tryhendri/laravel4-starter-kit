@@ -9,7 +9,7 @@ class Comment extends Eloquent {
 	 */
 	public function content()
 	{
-		return nl2br($this->content);
+		return nl2br(e($this->content));
 	}
 
 	/**

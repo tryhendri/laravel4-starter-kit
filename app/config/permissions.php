@@ -16,4 +16,11 @@ return array(
 		),
 	),
 
+	'Articles' => array(
+		array(
+			'permission' => 'comment',
+			'label'      => 'Can Comment',
+		),
+	),
+
 );

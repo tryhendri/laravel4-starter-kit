@@ -26,7 +26,7 @@
 
 {{-- Page content --}}
 @section('content')
-<h3>{{ $post->title }}</h3>
+<h3>{{{ $post->title }}}</h3>
 
 <p>{{ $post->content() }}</p>
 
@@ -68,9 +68,11 @@
 @if ( ! Sentry::check())
 You need to be logged in to add comments.<br /><br />
 Click <a href="{{ route('signin') }}">here</a> to login into your account.
+@elseif ( ! Sentry::hasAccess('comment'))
+sorry mate
 @else
 <h4>Add a Comment</h4>
-<form method="post" action="{{ route('view-post', $post->slug) }}">
+<form method="post" action="{{ route('view-article', $post->slug) }}">
 	<!-- CSRF Token -->
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 

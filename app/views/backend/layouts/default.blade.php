@@ -94,12 +94,16 @@
 			@include('frontend/notifications')
 
 			<!-- Content -->
-			@yield('content')
+			@section('content')
+			@show
 		</div>
 
 		<!-- Javascripts
 		================================================== -->
 		<script src="{{ asset('assets/js/jquery.v1.9.1.min.js') }}"></script>
 		<script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
+
+		@section('scripts')
+		@show
 	</body>
 </html>
