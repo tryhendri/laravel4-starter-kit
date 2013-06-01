@@ -23,12 +23,10 @@ Route::group(array('prefix' => 'admin'), function()
 		Route::get('{id}/edit', array('as' => 'update/article', 'uses' => 'Controllers\Admin\ArticlesController@getEdit'));
 		Route::post('{id}/edit', 'Controllers\Admin\ArticlesController@postEdit');
 
-		Route::get('{id}/copy', array('as' => 'copy/article', 'uses' => 'Controllers\Admin\ArticlesController@getEdit'));
-		Route::post('{id}/copy', 'Controllers\Admin\ArticlesController@postEdit');
+		Route::get('{id}/copy', array('as' => 'copy/article', 'uses' => 'Controllers\Admin\ArticlesController@getCopy'));
+		Route::post('{id}/copy', 'Controllers\Admin\ArticlesController@postCopy');
 
 		Route::get('{id}/delete', array('as' => 'delete/article', 'uses' => 'Controllers\Admin\ArticlesController@getDelete'));
-
-		Route::get('{id}/restore', array('as' => 'restore/article', 'uses' => 'Controllers\Admin\ArticlesController@getRestore'));
 	});
 
 	# User Management

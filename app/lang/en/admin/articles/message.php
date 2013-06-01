@@ -2,7 +2,7 @@
 
 return array(
 
-	'not_found' => 'Blog article does not exist.',
+	'not_found' => 'Blog article was not found.',
 
 	'success' => array(
 		'create' => 'Blog article created successfully.',

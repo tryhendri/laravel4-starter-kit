@@ -13,6 +13,17 @@ use View;
 class ArticlesController extends AdminController {
 
 	/**
+	 * Holds the form validation rules.
+	 *
+	 * @var array
+	 */
+	protected $validationRules = array(
+		'title'   => 'required|min:3',
+		'content' => 'required|min:3',
+		'slug'    => 'required|unique:articles',
+	);
+
+	/**
 	 * Show a list of all the blog articles.
 	 *
 	 * @return View
@@ -85,9 +96,9 @@ class ArticlesController extends AdminController {
 	 * @param  int  $id
 	 * @return Redirect
 	 */
-	public function postCopy($id = null)
+	public function postCopy()
 	{
-		return $this->processForm($id);
+		return $this->processForm();
 	}
 
 	/**
@@ -102,14 +113,14 @@ class ArticlesController extends AdminController {
 		if (is_null($article = Article::find($id)))
 		{
 			// Redirect to the articles management page
-			return Redirect::to('admin/articles')->with('error', Lang::get('admin/articles/message.not_found'));
+			return Redirect::route('articles')->with('error', Lang::get('admin/articles/message.not_found'));
 		}
 
 		// Delete the blog article
 		$article->delete();
 
 		// Redirect to the articles management page
-		return Redirect::to('admin/articles')->with('success', Lang::get('admin/articles/message.success.delete'));
+		return Redirect::route('articles')->with('success', Lang::get('admin/articles/message.success.delete'));
 	}
 
 	/**
@@ -131,7 +142,7 @@ class ArticlesController extends AdminController {
 			if (is_null($article = Article::find($id)))
 			{
 				// Redirect to the articles management page
-				return Redirect::to('admin/articles')->with('error', Lang::get('admin/articles/message.not_found'));
+				return Redirect::route('articles')->with('error', Lang::get('admin/articles/message.not_found'));
 			}
 		}
 
@@ -147,14 +158,17 @@ class ArticlesController extends AdminController {
 	 */
 	protected function processForm($id = null)
 	{
+		// Do we have a blog article id?
 		if ( ! is_null($id))
 		{
 			// Check if the blog article exists
 			if (is_null($article = Article::find($id)))
 			{
 				// Redirect to the articles management page
-				return Redirect::to('admin/articles')->with('error', Lang::get('admin/articles/message.not_found'));
+				return Redirect::route('articles')->with('error', Lang::get('admin/articles/message.not_found'));
 			}
+
+			$this->validationRules['slug'] = "required|unique:articles,slug,{$article->slug},slug";
 		}
 		else
 		{
@@ -162,14 +176,8 @@ class ArticlesController extends AdminController {
 			$article = new Article;
 		}
 
-		// Declare the rules for the form validation
-		$rules = array(
-			'title'   => 'required|min:3',
-			'content' => 'required|min:3',
-		);
-
 		// Create a new validator instance from our validation rules
-		$validator = Validator::make(Input::all(), $rules);
+		$validator = Validator::make(Input::all(), $this->validationRules);
 
 		// If validation fails, we'll exit the operation now.
 		if ($validator->fails())
