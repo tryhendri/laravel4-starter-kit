@@ -18,8 +18,16 @@ Route::group(array('prefix' => 'admin'), function()
 		Route::get('/', array('as' => 'blogs', 'uses' => 'Controllers\Admin\BlogsController@getIndex'));
 		Route::get('create', array('as' => 'create/blog', 'uses' => 'Controllers\Admin\BlogsController@getCreate'));
 		Route::post('create', 'Controllers\Admin\BlogsController@postCreate');
-		Route::get('{blogId}/edit', array('as' => 'update/blog', 'uses' => 'Controllers\Admin\BlogsController@getEdit'));
-		Route::post('{blogId}/edit', 'Controllers\Admin\BlogsController@postEdit');
+
+		Route::group(array('prefix' => '{blogId}/edit'), function()
+		{
+			Route::get('/', array('as' => 'update/blog', 'uses' => 'Controllers\Admin\BlogsController@getEdit'));
+			Route::post('/', 'Controllers\Admin\BlogsController@postEdit');
+
+			Route::get('comments', 'Controllers\Admin\BlogsController@getComments');
+
+		});
+
 		Route::get('{blogId}/delete', array('as' => 'delete/blog', 'uses' => 'Controllers\Admin\BlogsController@getDelete'));
 		Route::get('{blogId}/restore', array('as' => 'restore/blog', 'uses' => 'Controllers\Admin\BlogsController@getRestore'));
 	});

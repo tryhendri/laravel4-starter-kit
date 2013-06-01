@@ -33,8 +33,7 @@ class BlogsController extends AdminController {
 	 */
 	public function getCreate()
 	{
-		// Show the page
-		return View::make('backend/blogs/create');
+		return $this->showForm(null, 'create');
 	}
 
 	/**
@@ -44,6 +43,7 @@ class BlogsController extends AdminController {
 	 */
 	public function postCreate()
 	{
+		return $this->processForm();
 		// Declare the rules for the form validation
 		$rules = array(
 			'title'   => 'required|min:3',
@@ -64,12 +64,12 @@ class BlogsController extends AdminController {
 		$post = new Post;
 
 		// Update the blog post data
-		$post->title            = e(Input::get('title'));
-		$post->slug             = e(Str::slug(Input::get('title')));
-		$post->content          = e(Input::get('content'));
-		$post->meta_title       = e(Input::get('meta-title'));
-		$post->meta_description = e(Input::get('meta-description'));
-		$post->meta_keywords    = e(Input::get('meta-keywords'));
+		$post->title            = Input::get('title');
+		$post->slug             = Str::slug(Input::get('title'));
+		$post->content          = Input::get('content');
+		$post->meta_title       = Input::get('meta-title');
+		$post->meta_description = Input::get('meta-description');
+		$post->meta_keywords    = Input::get('meta-keywords');
 		$post->user_id          = Sentry::getId();
 
 		// Was the blog post created?
@@ -86,32 +86,25 @@ class BlogsController extends AdminController {
 	/**
 	 * Blog post update.
 	 *
-	 * @param  int  $postId
+	 * @param  int  $id
 	 * @return View
 	 */
-	public function getEdit($postId = null)
+	public function getEdit($id = null)
 	{
-		// Check if the blog post exists
-		if (is_null($post = Post::find($postId)))
-		{
-			// Redirect to the blogs management page
-			return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/message.does_not_exist'));
-		}
-
-		// Show the page
-		return View::make('backend/blogs/edit', compact('post'));
+		return $this->showForm($id, 'update');
 	}
 
 	/**
 	 * Blog Post update form processing page.
 	 *
-	 * @param  int  $postId
+	 * @param  int  $id
 	 * @return Redirect
 	 */
-	public function postEdit($postId = null)
+	public function postEdit($id = null)
 	{
+		return $this->processForm($id);
 		// Check if the blog post exists
-		if (is_null($post = Post::find($postId)))
+		if (is_null($post = Post::find($id)))
 		{
 			// Redirect to the blogs management page
 			return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/message.does_not_exist'));
@@ -134,34 +127,34 @@ class BlogsController extends AdminController {
 		}
 
 		// Update the blog post data
-		$post->title            = e(Input::get('title'));
-		$post->slug             = e(Str::slug(Input::get('title')));
-		$post->content          = e(Input::get('content'));
-		$post->meta_title       = e(Input::get('meta-title'));
-		$post->meta_description = e(Input::get('meta-description'));
-		$post->meta_keywords    = e(Input::get('meta-keywords'));
+		$post->title            = Input::get('title');
+		$post->slug             = Str::slug(Input::get('title'));
+		$post->content          = Input::get('content');
+		$post->meta_title       = Input::get('meta-title');
+		$post->meta_description = Input::get('meta-description');
+		$post->meta_keywords    = Input::get('meta-keywords');
 
 		// Was the blog post updated?
 		if($post->save())
 		{
 			// Redirect to the new blog post page
-			return Redirect::to("admin/blogs/$postId/edit")->with('success', Lang::get('admin/blogs/message.update.success'));
+			return Redirect::to("admin/blogs/$id/edit")->with('success', Lang::get('admin/blogs/message.update.success'));
 		}
 
 		// Redirect to the blogs post management page
-		return Redirect::to("admin/blogs/$postId/edit")->with('error', Lang::get('admin/blogs/message.update.error'));
+		return Redirect::to("admin/blogs/$id/edit")->with('error', Lang::get('admin/blogs/message.update.error'));
 	}
 
 	/**
 	 * Delete the given blog post.
 	 *
-	 * @param  int  $postId
+	 * @param  int  $id
 	 * @return Redirect
 	 */
-	public function getDelete($postId)
+	public function getDelete($id)
 	{
 		// Check if the blog post exists
-		if (is_null($post = Post::find($postId)))
+		if (is_null($post = Post::find($id)))
 		{
 			// Redirect to the blogs management page
 			return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/message.not_found'));
@@ -172,6 +165,25 @@ class BlogsController extends AdminController {
 
 		// Redirect to the blog posts management page
 		return Redirect::to('admin/blogs')->with('success', Lang::get('admin/blogs/message.delete.success'));
+	}
+
+
+	public function showForm($id = null, $pageSegment = null)
+	{
+		$post = null;
+
+		if ( ! is_null($id))
+		{
+			// Check if the blog post exists
+			if (is_null($post = Post::find($id)))
+			{
+				// Redirect to the blogs management page
+				return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/message.does_not_exist'));
+			}
+		}
+
+		// Show the page
+		return View::make('backend/blogs/form', compact('post', 'pageSegment'));
 	}
 
 }
