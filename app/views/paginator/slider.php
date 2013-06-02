@@ -3,8 +3,7 @@
 ?>
 
 <div class="pagination">
-	<ul class="pull left">
-		<li>
+	<span class="pull left">
 		Showing
 		<?php echo $paginator->getFrom(); ?>
 		-
@@ -12,8 +11,7 @@
 		of
 		<?php echo $paginator->getTotal(); ?>
 		items
-		</li>
-	</ul>
+	</span>
 
 	<ul class="pull-right">
 		<?php echo $presenter->render(); ?>
