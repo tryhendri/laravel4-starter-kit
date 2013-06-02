@@ -199,7 +199,7 @@ class GroupsController extends AdminController {
 				return Redirect::route('update/group', $id)->with('success', Lang::get('admin/groups/message.success.update'));
 			}
 
-			//
+			// Prepare the error message
 			$error = Lang::get('admin/groups/message.error.update');
 		}
 		catch (GroupNotFoundException $e)

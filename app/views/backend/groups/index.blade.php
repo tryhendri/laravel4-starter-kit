@@ -13,7 +13,7 @@
 		{{ trans("admin/groups/general.title") }}
 
 		<div class="pull-right">
-			<a href="{{ route('create/group') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
+			<a href="{{ route('group/create') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
 		</div>
 	</h3>
 </div>
@@ -39,8 +39,8 @@
 			<td>{{ $group->users()->count() }}</td>
 			<td>{{ $group->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('update/group', $group->id) }}" class="btn btn-mini tip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
-				<a href="{{ route('delete/group', $group->id) }}" class="btn btn-mini btn-danger tip" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
+				<a href="{{ route('group/update', $group->id) }}" class="btn btn-mini tip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
+				<a href="{{ route('group/delete', $group->id) }}" class="btn btn-mini btn-danger tip" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
 			</td>
 		</tr>
 		@endforeach

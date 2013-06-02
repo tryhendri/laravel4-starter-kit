@@ -134,20 +134,43 @@ class ArticlesController extends AdminController {
 	{
 		// Fallback data
 		$article = null;
+		$comments = null;
 
 		// Do we have the blog article id?
 		if ( ! is_null($id))
 		{
+			// Get this blog article data
+			$article = Article::with(array(
+				'author' => function($query)
+				{
+					$query->withTrashed();
+				},
+				'comments',
+			))->find($id);
+
 			// Check if the blog article exists
-			if (is_null($article = Article::find($id)))
+			if (is_null($article))
 			{
 				// Redirect to the articles management page
 				return Redirect::route('articles')->with('error', Lang::get('admin/articles/message.not_found'));
 			}
+
+			// Get this article comments
+			$comments = $article->comments()->with(array(
+				'author' => function($query)
+				{
+					$query->withTrashed();
+				},
+			))->orderBy('created_at', 'DESC')->get();
 		}
 
 		// Show the page
-		return View::make('backend/articles/form', compact('article', 'pageSegment'));
+		return View::make('backend/articles/form', compact('article', 'comments', 'pageSegment'));
+	}
+
+	public function getComments($id)
+	{
+
 	}
 
 	/**
@@ -199,11 +222,11 @@ class ArticlesController extends AdminController {
 		if($article->save())
 		{
 			// Redirect to the new blog article page
-			return Redirect::route('update/article', $id)->with('success', Lang::get('admin/articles/message.success.update'));
+			return Redirect::route('article/update', $id)->with('success', Lang::get('admin/articles/message.success.update'));
 		}
 
 		// Redirect to the articles management page
-		return Redirect::route('update/article', $id)->with('error', Lang::get('admin/articles/message.error.update'));
+		return Redirect::route('article/update', $id)->with('error', Lang::get('admin/articles/message.error.update'));
 	}
 
 }

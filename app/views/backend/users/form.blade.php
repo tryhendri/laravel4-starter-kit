@@ -151,7 +151,7 @@
 	<!-- Form Actions -->
 	<div class="control-group">
 		<div class="controls">
-			<a class="btn btn-link" href="{{ route('groups') }}">{{ trans('button.cancel') }}</a>
+			<a class="btn btn-link" href="{{ route('users') }}">{{ trans('button.cancel') }}</a>
 
 			<button type="reset" class="btn">{{ trans('button.reset') }}</button>
 

@@ -22,7 +22,9 @@
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab-general" data-toggle="tab">{{ trans('admin/articles/general.tabs.general') }}</a></li>
 	<li><a href="#tab-meta-data" data-toggle="tab">{{ trans('admin/articles/general.tabs.metadata') }}</a></li>
-	<li><a href="#tab-comments" data-toggle="tab">{{ trans('admin/articles/general.tabs.comments') }}</a></li>
+	@if ( ! empty($article) and $pageSegment == 'update')
+	<li><a href="{{ route('article/comments', $article->id) }}">{{ trans('admin/articles/general.tabs.comments') }}</a></li>
+	@endif
 </ul>
 
 <form class="form-horizontal" method="post" action="" autocomplete="off">

@@ -13,7 +13,7 @@
 		{{ trans("admin/articles/general.title") }}
 
 		<div class="pull-right">
-			<a href="{{ route('create/article') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
+			<a href="{{ route('article/create') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
 		</div>
 	</h3>
 </div>
@@ -34,12 +34,12 @@
 		@foreach ($articles as $article)
 		<tr>
 			<td>{{ $article->title }}</td>
-			<td>{{ $article->comments->count() }}</td>
+			<td><a href="{{ route('article/comments', $article->id) }}">{{ $article->comments->count() }}</a></td>
 			<td>{{ $article->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('update/article', $article->id) }}" class="btn btn-mini tip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
-				<a href="{{ route('copy/article', $article->id) }}" class="btn btn-mini btn-info tip" title="{{ trans('button.copy') }}">{{ trans('button.copy') }}</a>
-				<a href="{{ route('delete/article', $article->id) }}" class="btn btn-mini btn-danger tip" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
+				<a href="{{ route('article/update', $article->id) }}" class="btn btn-mini tip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
+				<a href="{{ route('article/copy', $article->id) }}" class="btn btn-mini btn-info tip" title="{{ trans('button.copy') }}">{{ trans('button.copy') }}</a>
+				<a href="{{ route('article/delete', $article->id) }}" class="btn btn-mini btn-danger tip" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
 			</td>
 		</tr>
 		@endforeach

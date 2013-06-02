@@ -17,16 +17,22 @@ Route::group(array('prefix' => 'admin'), function()
 	{
 		Route::get('/', array('as' => 'articles', 'uses' => 'Controllers\Admin\ArticlesController@getIndex'));
 
-		Route::get('create', array('as' => 'create/article', 'uses' => 'Controllers\Admin\ArticlesController@getCreate'));
+		## maybe add routes to manage individual comments ?!?
+		Route::get('comments', array('as' => 'articles/comments', 'uses' => 'Controllers\Admin\ArticlesCommentsController@getIndex'));
+
+		Route::get('create', array('as' => 'article/create', 'uses' => 'Controllers\Admin\ArticlesController@getCreate'));
 		Route::post('create', 'Controllers\Admin\ArticlesController@postCreate');
 
-		Route::get('{id}/edit', array('as' => 'update/article', 'uses' => 'Controllers\Admin\ArticlesController@getEdit'));
-		Route::post('{id}/edit', 'Controllers\Admin\ArticlesController@postEdit');
+		Route::get('view/{id}', array('as' => 'article/update', 'uses' => 'Controllers\Admin\ArticlesController@getEdit'));
+		Route::post('view/{id}', 'Controllers\Admin\ArticlesController@postEdit');
 
-		Route::get('{id}/copy', array('as' => 'copy/article', 'uses' => 'Controllers\Admin\ArticlesController@getCopy'));
-		Route::post('{id}/copy', 'Controllers\Admin\ArticlesController@postCopy');
+		Route::get('copy/{id}', array('as' => 'article/copy', 'uses' => 'Controllers\Admin\ArticlesController@getCopy'));
+		Route::post('copy/{id}', 'Controllers\Admin\ArticlesController@postCopy');
 
-		Route::get('{id}/delete', array('as' => 'delete/article', 'uses' => 'Controllers\Admin\ArticlesController@getDelete'));
+		Route::get('delete/{id}', array('as' => 'article/delete', 'uses' => 'Controllers\Admin\ArticlesController@getDelete'));
+
+		Route::get('view/{id}/comments', array('as' => 'article/comments', 'uses' => 'Controllers\Admin\ArticlesController@getComments'));
+
 	});
 
 	# User Management
@@ -34,15 +40,15 @@ Route::group(array('prefix' => 'admin'), function()
 	{
 		Route::get('/', array('as' => 'users', 'uses' => 'Controllers\Admin\UsersController@getIndex'));
 
-		Route::get('create', array('as' => 'create/user', 'uses' => 'Controllers\Admin\UsersController@getCreate'));
+		Route::get('create', array('as' => 'user/create', 'uses' => 'Controllers\Admin\UsersController@getCreate'));
 		Route::post('create', 'Controllers\Admin\UsersController@postCreate');
 
-		Route::get('{id}/edit', array('as' => 'update/user', 'uses' => 'Controllers\Admin\UsersController@getEdit'));
-		Route::post('{id}/edit', 'Controllers\Admin\UsersController@postEdit');
+		Route::get('view/{id}', array('as' => 'user/update', 'uses' => 'Controllers\Admin\UsersController@getEdit'));
+		Route::post('view/{id}', 'Controllers\Admin\UsersController@postEdit');
 
-		Route::get('{id}/delete', array('as' => 'delete/user', 'uses' => 'Controllers\Admin\UsersController@getDelete'));
+		Route::get('delete/{id}', array('as' => 'user/delete', 'uses' => 'Controllers\Admin\UsersController@getDelete'));
 
-		Route::get('{id}/restore', array('as' => 'restore/user', 'uses' => 'Controllers\Admin\UsersController@getRestore'));
+		Route::get('restore/{id}', array('as' => 'user/restore', 'uses' => 'Controllers\Admin\UsersController@getRestore'));
 	});
 
 	# Group Management
@@ -50,13 +56,13 @@ Route::group(array('prefix' => 'admin'), function()
 	{
 		Route::get('/', array('as' => 'groups', 'uses' => 'Controllers\Admin\GroupsController@getIndex'));
 
-		Route::get('create', array('as' => 'create/group', 'uses' => 'Controllers\Admin\GroupsController@getCreate'));
+		Route::get('create', array('as' => 'group/create', 'uses' => 'Controllers\Admin\GroupsController@getCreate'));
 		Route::post('create', 'Controllers\Admin\GroupsController@postCreate');
 
-		Route::get('{id}/edit', array('as' => 'update/group', 'uses' => 'Controllers\Admin\GroupsController@getEdit'));
-		Route::post('{id}/edit', 'Controllers\Admin\GroupsController@postEdit');
+		Route::get('view/{id}', array('as' => 'group/update', 'uses' => 'Controllers\Admin\GroupsController@getEdit'));
+		Route::post('view/{id}', 'Controllers\Admin\GroupsController@postEdit');
 
-		Route::get('{id}/delete', array('as' => 'delete/group', 'uses' => 'Controllers\Admin\GroupsController@getDelete'));
+		Route::get('delete/{id}', array('as' => 'group/delete', 'uses' => 'Controllers\Admin\GroupsController@getDelete'));
 	});
 
 	# Dashboard

@@ -13,7 +13,7 @@
 		{{ trans("admin/users/general.title") }}
 
 		<div class="pull-right">
-			<a href="{{ route('create/user') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
+			<a href="{{ route('user/create') }}" class="btn btn-small btn-info"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
 		</div>
 	</h3>
 </div>
@@ -41,12 +41,12 @@
 			<td>{{ trans('general.' . ($user->isActivated() ? 'yes' : 'no')) }}</td>
 			<td>{{ $user->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('update/user', $user->id) }}" class="btn btn-mini tip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
+				<a href="{{ route('user/update', $user->id) }}" class="btn btn-mini tip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
 
 				@if ( ! is_null($user->deleted_at))
-				<a href="{{ route('restore/user', $user->id) }}" class="btn btn-mini btn-warning tip" title="{{ trans('button.restore') }}">{{ trans('button.restore') }}</a>
+				<a href="{{ route('user/restore', $user->id) }}" class="btn btn-mini btn-warning tip" title="{{ trans('button.restore') }}">{{ trans('button.restore') }}</a>
 				@elseif (Sentry::getId() !== $user->id)
-				<a href="{{ route('delete/user', $user->id) }}" class="btn btn-mini btn-danger tip" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
+				<a href="{{ route('user/delete', $user->id) }}" class="btn btn-mini btn-danger tip" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
 				@else
 				<span class="btn btn-mini btn-danger disabled">{{ trans('button.delete') }}</span>
 				@endif
