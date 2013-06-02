@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-{{ trans("admin/articles/general.title") }}
+{{ trans("admin/articles/general.title") }} ::
 @parent
 @stop
 
@@ -30,18 +30,24 @@
 		</tr>
 	</thead>
 	<tbody>
+		@if ($articles->count() >= 1)
 		@foreach ($articles as $article)
 		<tr>
 			<td>{{ $article->title }}</td>
 			<td>{{ $article->comments->count() }}</td>
 			<td>{{ $article->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('update/article', $article->id) }}" class="btn btn-mini" data-toggle="tooltip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
-				<a href="{{ route('copy/article', $article->id) }}" class="btn btn-mini btn-info" title="{{ trans('button.copy') }}">{{ trans('button.copy') }}</a>
-				<a href="{{ route('delete/article', $article->id) }}" class="btn btn-mini btn-danger" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
+				<a href="{{ route('update/article', $article->id) }}" class="btn btn-mini tip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
+				<a href="{{ route('copy/article', $article->id) }}" class="btn btn-mini btn-info tip" title="{{ trans('button.copy') }}">{{ trans('button.copy') }}</a>
+				<a href="{{ route('delete/article', $article->id) }}" class="btn btn-mini btn-danger tip" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
 			</td>
 		</tr>
 		@endforeach
+		@else
+		<tr>
+			<td colspan="4">{{ trans('table.no_results') }}</td>
+		</tr>
+		@endif
 	</tbody>
 </table>
 

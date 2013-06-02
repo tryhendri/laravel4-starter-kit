@@ -13,7 +13,7 @@
 		{{ trans("admin/groups/general.{$pageSegment}.title") }}
 
 		<div class="pull-right">
-			<a href="{{ route('groups') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> {{ trans('buttons.back') }}</a>
+			<a href="{{ route('groups') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> {{ trans('button.back') }}</a>
 		</div>
 	</h3>
 </div>
@@ -36,7 +36,7 @@
 			<div class="control-group{{ $errors->has('name') ? ' error' : '' }}">
 				<label class="control-label" for="name">{{ trans('admin/groups/form.name') }}</label>
 				<div class="controls">
-					<input type="text" name="name" id="name" value="{{ Input::old('name', ! empty($group) ? $group->name : null) }}" />
+					<input type="text" name="name" id="name" value="{{{ Input::old('name', ! empty($group) ? $group->name : null) }}}" />
 					{{ $errors->first('name', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
@@ -58,14 +58,14 @@
 							<div class="radio inline">
 								<label for="{{ $permission['permission'] }}_allow" onclick="">
 									<input type="radio" value="1" id="{{ $permission['permission'] }}_allow" name="permissions[{{ $permission['permission'] }}]"{{ (array_get($groupPermissions, $permission['permission']) === 1 ? ' checked="checked"' : '') }}>
-									Allow
+									{{ trans('general.allow') }}
 								</label>
 							</div>
 
 							<div class="radio inline">
 								<label for="{{ $permission['permission'] }}_deny" onclick="">
 									<input type="radio" value="0" id="{{ $permission['permission'] }}_deny" name="permissions[{{ $permission['permission'] }}]"{{ ( ! array_get($groupPermissions, $permission['permission']) ? ' checked="checked"' : '') }}>
-									Deny
+									{{ trans('general.deny') }}
 								</label>
 							</div>
 						</div>
@@ -86,7 +86,7 @@
 
 			<button type="reset" class="btn">{{ trans('button.reset') }}</button>
 
-			<button type="submit" class="btn btn-success">{{ trans('button.update') }}</button>
+			<button type="submit" class="btn btn-success">{{ trans("button.{$pageSegment}") }}</button>
 		</div>
 	</div>
 </form>

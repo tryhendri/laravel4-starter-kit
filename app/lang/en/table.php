@@ -2,6 +2,8 @@
 
 return array(
 
-	'actions' => 'Actions'
+	'actions' => 'Actions',
+
+	'no_results' => 'No Results',
 
 );

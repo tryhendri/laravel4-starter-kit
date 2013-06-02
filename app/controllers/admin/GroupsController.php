@@ -143,8 +143,11 @@ class GroupsController extends AdminController {
 		}
 		catch (GroupNotFoundException $e)
 		{
+			// Prepare the error message
+			$error = Lang::get('admin/groups/message.not_found', compact('id'));
+
 			// Redirect to the groups management page
-			return Redirect::route('groups')->with('error', Lang::get('admin/groups/message.not_found', compact('id')));
+			return Redirect::route('groups')->with('error', $error);
 		}
 	}
 
@@ -156,37 +159,35 @@ class GroupsController extends AdminController {
 	 */
 	protected function processForm($id = null)
 	{
-
-		// We need to reverse the UI specific logic for our
-		// permissions here before we update the group.
-		$permissions = Input::get('permissions', array());
-		$this->decodePermissions($permissions);
-		app('request')->request->set('permissions', $permissions);
-
 		try
 		{
-			// Get the group information
-			$group = Sentry::getGroupProvider()->findById($id);
-		}
-		catch (GroupNotFoundException $e)
-		{
-			// Redirect to the groups management page
-			return Rediret::route('groups')->with('error', Lang::get('admin/groups/message.not_found', compact('id')));
-		}
+			// We need to reverse the UI specific logic for our
+			// permissions here before we update the group.
+			$permissions = Input::get('permissions', array());
+			$this->decodePermissions($permissions);
+			app('request')->request->set('permissions', $permissions);
 
+			if ( ! is_null($id))
+			{
+				// Get the group information
+				$group = Sentry::getGroupProvider()->findById($id);
+			}
+			else
+			{
+				// Create a new group
+				$group = Sentry::getGroupProvider()->createModel();
+			}
 
-		// Create a new validator instance from our validation rules
-		$validator = Validator::make(Input::all(), $this->validationRules);
+			// Create a new validator instance from our validation rules
+			$validator = Validator::make(Input::all(), $this->validationRules);
 
-		// If validation fails, we'll exit the operation now.
-		if ($validator->fails())
-		{
-			// Ooops.. something went wrong
-			return Redirect::back()->withInput()->withErrors($validator);
-		}
+			// If validation fails, we'll exit the operation now.
+			if ($validator->fails())
+			{
+				// Ooops.. something went wrong
+				return Redirect::back()->withInput()->withErrors($validator);
+			}
 
-		try
-		{
 			// Update the group data
 			$group->name        = Input::get('name');
 			$group->permissions = Input::get('permissions');
@@ -197,19 +198,34 @@ class GroupsController extends AdminController {
 				// Redirect to the group page
 				return Redirect::route('update/group', $id)->with('success', Lang::get('admin/groups/message.success.update'));
 			}
-			else
-			{
-				// Redirect to the group page
-				return Redirect::route('update/group', $id)->with('error', Lang::get('admin/groups/message.error.update'));
-			}
+
+			//
+			$error = Lang::get('admin/groups/message.error.update');
+		}
+		catch (GroupNotFoundException $e)
+		{
+			// Prepare the error message
+			$error = Lang::get('admin/groups/message.not_found', compact('id'));
+
+			// Redirect to the groups management page
+			return Redirect::route('groups')->with('error', $error);
+		}
+		catch (GroupExistsException $e)
+		{
+			$error = Lang::get('admin/groups/message.group_exists');
 		}
 		catch (NameRequiredException $e)
 		{
-			$error = Lang::get('admin/group/message.name_required');
+			$error = Lang::get('admin/groups/message.name_required');
 		}
 
-		// Redirect to the group page
-		return Redirect::route('update/group', $id)->withInput()->with('error', $error);
+		// Redirect to the appropriate page
+		if ( ! is_null($id))
+		{
+			return Redirect::route('update/group', $id)->withInput()->with('error', $error);
+		}
+
+		return Redirect::route('create/group')->withInput()->with('error', $error);
 	}
 
 }
