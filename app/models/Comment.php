@@ -23,13 +23,13 @@ class Comment extends Eloquent {
 	}
 
 	/**
-	 * Get the comment's post's.
+	 * Get the comment's article's.
 	 *
-	 * @return Blog\Post
+	 * @return Article
 	 */
-	public function post()
+	public function article()
 	{
-		return $this->belongsTo('Post');
+		return $this->belongsTo('Article', 'article_id');
 	}
 
 }

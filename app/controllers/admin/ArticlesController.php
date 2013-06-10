@@ -5,7 +5,6 @@ use Article;
 use Input;
 use Lang;
 use Redirect;
-use Sentry;
 use Str;
 use Validator;
 use View;
@@ -133,7 +132,7 @@ class ArticlesController extends AdminController {
 	protected function showForm($id = null, $pageSegment = null)
 	{
 		// Fallback data
-		$article = null;
+		$article  = null;
 		$comments = null;
 
 		// Do we have the blog article id?

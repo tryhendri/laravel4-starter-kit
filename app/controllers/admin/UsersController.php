@@ -165,6 +165,29 @@ class UsersController extends AdminController {
 		}
 	}
 
+	public function getComments($id = null)
+	{
+		try
+		{
+			// Get user information
+			$user = Sentry::getUserProvider()->createModel()->withTrashed()->find($id);
+
+			// Grab the user comments
+			$comments = $user->comments()->with('article')->paginate();
+
+			// Show the page
+			return View::make('backend/users/comments', compact('user', 'comments'));
+		}
+		catch (UserNotFoundException $e)
+		{
+			// Prepare the error message
+			$error = Lang::get('admin/users/message.not_found', compact('id'));
+
+			// Redirect to the user management page
+			return Redirect::route('users')->with('error', $error);
+		}
+	}
+
 	/**
 	 * Shows the form.
 	 *

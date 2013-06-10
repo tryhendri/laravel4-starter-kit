@@ -32,8 +32,8 @@
 					<span class="tip" title="{{ $comment->created_at }}">&bull; {{ $comment->created_at->diffForHumans() }}</span>
 
 					<span class="pull-right">
-						<a href="#" class="btn btn-mini">Edit</a>
-						<a href="#" class="btn btn-mini btn-danger">Delete</a>
+						<a href="{{ route('comment/update', array('id' => $comment->article_id, 'cid' => $comment->id)) }}" class="btn btn-mini">Edit</a>
+						<a href="{{ route('comment/delete', array('id' => $comment->article_id, 'cid' => $comment->id)) }}" class="btn btn-mini btn-danger">Delete</a>
 					</span>
 				</p>
 

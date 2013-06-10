@@ -22,6 +22,7 @@
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab-general" data-toggle="tab">{{ trans('admin/users/general.tabs.general') }}</a></li>
 	<li><a href="#tab-permissions" data-toggle="tab">{{ trans('admin/users/general.tabs.permissions') }}</a></li>
+	<li><a href="{{ route('user/comments', $user->id) }}">{{ trans('admin/users/general.tabs.comments') }}</a></li>
 </ul>
 
 <form class="form-horizontal" method="post" action="" autocomplete="off">

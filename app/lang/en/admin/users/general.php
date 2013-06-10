@@ -12,9 +12,14 @@ return array(
 		'title' => 'Update User',
 	),
 
+	'comments' => array(
+		'title' => 'Comments',
+	),
+
 	'tabs' => array(
 		'general'     => 'General',
 		'permissions' => 'Permissions',
+		'comments'    => 'Comments',
 	),
 
 );

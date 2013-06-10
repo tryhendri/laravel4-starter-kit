@@ -22,6 +22,11 @@ class User extends SentryUserModel {
 		return "{$this->first_name} {$this->last_name}";
 	}
 
+	public function comments()
+	{
+		return $this->hasMany('Comment');
+	}
+
 	/**
 	 * Returns the user Gravatar image url.
 	 *
