@@ -13,7 +13,7 @@ return array(
 	),
 
 	'comments' => array(
-		'title' => 'Comments',
+		'title' => 'User Comments',
 	),
 
 	'tabs' => array(

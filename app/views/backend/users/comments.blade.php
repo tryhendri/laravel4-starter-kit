@@ -11,10 +11,6 @@
 <div class="page-header">
 	<h3>
 		{{ trans('admin/users/general.comments.title') }}
-
-		<div class="pull-right">
-			<a href="{{ route('users') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> {{ trans('button.back') }}</a>
-		</div>
 	</h3>
 </div>
 
@@ -30,8 +26,8 @@
 <table class="table table-bordered table-striped table-hover">
 	<thead>
 		<tr>
-			<th class="span2">* Article Name</th>
-			<th class="span2">* Created at</th>
+			<th>{{ trans('admin/articles/table.title') }}</th>
+			<th class="span2">{{ trans('admin/articles/table.created_at') }}</th>
 			<th class="span2">{{ trans('table.actions') }}</th>
 		</tr>
 	</thead>
@@ -39,10 +35,11 @@
 		@if ($comments->count() >= 1)
 		@foreach ($comments as $comment)
 		<tr>
-			<td>{{ $comment->article->name }}</td>
+			<td><a href="{{ route('article/update', $comment->article_id) }}">{{ $comment->article->title }}</a></td>
 			<td>{{ $comment->created_at->diffForHumans() }}</td>
 			<td>
-
+				<a href="{{ route('comment/update', $comment->id) }}" class="btn btn-mini tip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
+				<a href="{{ route('comment/delete', $comment->id) }}" class="btn btn-mini btn-danger tip" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
 			</td>
 		</tr>
 		@endforeach
