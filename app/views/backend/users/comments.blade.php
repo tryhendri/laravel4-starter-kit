@@ -23,7 +23,7 @@
 
 {{ $comments->links() }}
 
-<table class="table table-bordered table-striped table-hover">
+<table class="table table-striped table-hover">
 	<thead>
 		<tr>
 			<th>{{ trans('admin/articles/table.title') }}</th>
@@ -38,8 +38,18 @@
 			<td><a href="{{ route('article/update', $comment->article_id) }}">{{ $comment->article->title }}</a></td>
 			<td>{{ $comment->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('comment/update', $comment->id) }}" class="btn btn-mini tip" title="{{ trans('button.edit') }}">{{ trans('button.edit') }}</a>
-				<a href="{{ route('comment/delete', $comment->id) }}" class="btn btn-mini btn-danger tip" title="{{ trans('button.delete') }}">{{ trans('button.delete') }}</a>
+				<a href="{{ route('comment/update', $comment->id) }}" class="btn btn-link tip" title="{{ trans('button.edit') }}">
+					<span class="icon-stack">
+						<i class="icon-check-empty icon-stack-base"></i>
+						<i class="icon-pencil"></i>
+					</span>
+				</a>
+				<a href="{{ route('comment/delete', $comment->id) }}" class="btn btn-link tip" title="{{ trans('button.delete') }}">
+					<span class="icon-stack">
+						<i class="icon-check-empty icon-stack-base"></i>
+						<i class="icon-trash"></i>
+					</span>
+				</a>
 			</td>
 		</tr>
 		@endforeach

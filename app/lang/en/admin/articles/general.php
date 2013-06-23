@@ -2,7 +2,7 @@
 
 return array(
 
-	'title' => 'Blog Articles Management',
+	'title' => 'Articles Management',
 
 	'create' => array(
 		'title' => 'Create Blog Article',

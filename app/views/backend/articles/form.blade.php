@@ -13,7 +13,7 @@
 		{{ trans("admin/articles/general.{$pageSegment}.title") }}
 
 		<div class="pull-right">
-			<a href="{{ route('articles') }}" class="btn btn-small btn-info"><i class="icon-circle-arrow-left icon-white"></i> {{ trans('button.back') }}</a>
+			<a href="{{ route('articles') }}" class="btn btn-large btn-link"><i class="icon-circle-arrow-left icon-white"></i> {{ trans('button.back') }}</a>
 		</div>
 	</h3>
 </div>
@@ -39,7 +39,7 @@
 			<div class="control-group{{ $errors->has('title') ? ' error' : '' }}">
 				<label class="control-label" for="title">{{ trans('admin/articles/form.title') }}</label>
 				<div class="controls">
-					<input type="text" name="title" id="title" value="{{{ Input::old('title', ! empty($article) ? $article->title : null) }}}" />
+					<input class="span6" type="text" name="title" id="title" value="{{{ Input::old('title', ! empty($article) ? $article->title : null) }}}" />
 					{{ $errors->first('title', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>
@@ -48,12 +48,7 @@
 			<div class="control-group{{ $errors->has('slug') ? ' error' : '' }}">
 				<label class="control-label" for="slug">{{ trans('admin/articles/form.slug') }}</label>
 				<div class="controls">
-					<div class="input-prepend">
-						<span class="add-on">
-							{{ str_finish(URL::to('/'), '/') }}
-						</span>
-						<input class="span6" type="text" name="slug" id="slug" value="{{{ Input::old('slug', ! empty($article) ? $article->slug : null) }}}" />
-					</div>
+					<input class="span6" type="text" name="slug" id="slug" value="{{{ Input::old('slug', ! empty($article) ? $article->slug : null) }}}" />
 					{{ $errors->first('slug', '<span class="help-inline">:message</span>') }}
 				</div>
 			</div>

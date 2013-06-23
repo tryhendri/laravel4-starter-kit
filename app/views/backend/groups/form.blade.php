@@ -13,7 +13,7 @@
 		{{ trans("admin/groups/general.{$pageSegment}.title") }}
 
 		<div class="pull-right">
-			<a href="{{ route('groups') }}" class="btn btn-small btn-inverse"><i class="icon-circle-arrow-left icon-white"></i> {{ trans('button.back') }}</a>
+			<a href="{{ route('groups') }}" class="btn btn-large btn-link"><i class="icon-circle-arrow-left icon-white"></i> {{ trans('button.back') }}</a>
 		</div>
 	</h3>
 </div>

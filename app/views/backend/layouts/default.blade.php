@@ -19,9 +19,9 @@
 
 		<!-- CSS
 		================================================== -->
-		<link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
-		<link href="{{ asset('assets/css/bootstrap-responsive.css') }}" rel="stylesheet">
-
+		<link href="{{ asset('assets/css/bootstrap/bootstrap.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/bootstrap/bootstrap-responsive.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/font-awesome/font-awesome.min.css') }}" rel="stylesheet" >
 		<style>
 		@section('styles')
 		body {
@@ -58,15 +58,15 @@
 						</a>
 						<div class="nav-collapse collapse">
 							<ul class="nav">
-								<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{ URL::to('admin') }}"><i class="icon-home icon-white"></i> Home</a></li>
+								<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{ URL::to('admin') }}"><i class="icon-dashboard"></i> Dashboard</a></li>
 
 								<li class="dropdown{{ (Request::is('admin/articles') ? ' active' : '') }}">
 									<a class="dropdown-toggle" data-toggle="dropdown" href="{{ URL::to('admin/articles') }}">
-										<i class="icon-list-alt icon-white"></i> Articles <span class="caret"></span>
+										<i class="icon-list-alt"></i> Articles <span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu">
-										<li{{ (Request::is('admin/articles') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/articles') }}"><i class="icon-user"></i> Articles</a></li>
-										<li{{ (Request::is('admin/articles/comments') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/articles/comments') }}"><i class="icon-user"></i> Comments</a></li>
+										<li{{ (Request::is('admin/articles') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/articles') }}"><i class="icon-list-alt"></i> Articles</a></li>
+										<li{{ (Request::is('admin/articles/comments') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/articles/comments') }}"><i class="icon-comments"></i> Comments</a></li>
 									</ul>
 								</li>
 
@@ -100,7 +100,7 @@
 
 		<!-- Javascripts
 		================================================== -->
-		<script src="{{ asset('assets/js/jquery.v1.10.1.min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery/jquery.v1.10.1.min.js') }}"></script>
 		<script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('assets/js/application.js') }}"></script>
 

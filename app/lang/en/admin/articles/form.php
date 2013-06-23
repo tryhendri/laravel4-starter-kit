@@ -2,7 +2,7 @@
 
 return array(
 
-	'title'   => 'Article Title',
+	'title'   => 'Title',
 	'slug'    => 'Slug',
 	'content' => 'Content',
 
