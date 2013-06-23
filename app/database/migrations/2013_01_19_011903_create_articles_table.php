@@ -14,8 +14,9 @@ class CreatePostsTable extends Migration {
 		// Create the `Articles` table
 		Schema::create('articles', function($table)
 		{
-			$table->increments('id')->unsigned();
-			$table->integer('user_id')->unsigned();
+			$table->increments('id');
+			$table->boolean('published');
+			$table->integer('user_id');
 			$table->string('title');
 			$table->string('slug');
 			$table->text('content');

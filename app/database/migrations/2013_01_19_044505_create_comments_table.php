@@ -14,11 +14,10 @@ class CreateCommentsTable extends Migration {
 		// Create the `Comments` table
 		Schema::create('comments', function($table)
 		{
-			$table->increments('id')->unsigned();
-
-			$table->integer('parent_id')->unsigned()->nullable();
-			$table->integer('post_id')->unsigned();
-			$table->integer('user_id')->unsigned();
+			$table->increments('id');
+			$table->integer('parent_id')->nullable();
+			$table->integer('post_id');
+			$table->integer('user_id');
 			$table->text('content');
 
 			$table->engine = 'InnoDB';
