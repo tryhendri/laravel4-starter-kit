@@ -18,7 +18,7 @@
 	</h3>
 </div>
 
-<!-- Tabs -->
+{{-- Tabs --}}
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab-general" data-toggle="tab">{{ trans('admin/users/general.tabs.general') }}</a></li>
 	<li><a href="#tab-permissions" data-toggle="tab">{{ trans('admin/users/general.tabs.permissions') }}</a></li>
@@ -28,14 +28,14 @@
 </ul>
 
 <form class="form-horizontal" method="post" action="" autocomplete="off">
-	<!-- CSRF Token -->
+	{{-- CSRF Token --}}
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-	<!-- Tabs Content -->
+	{{-- Tabs Content --}}
 	<div class="tab-content">
-		<!-- General tab -->
+		{{-- General tab --}}
 		<div class="tab-pane active" id="tab-general">
-			<!-- First Name -->
+			{{-- First Name --}}
 			<div class="control-group{{ $errors->has('first_name') ? ' error' : null }}">
 				<label class="control-label" for="first_name">{{ trans('admin/users/form.first_name') }}</label>
 				<div class="controls">
@@ -44,7 +44,7 @@
 				</div>
 			</div>
 
-			<!-- Last Name -->
+			{{-- Last Name --}}
 			<div class="control-group{{ $errors->has('last_name') ? ' error' : null }}">
 				<label class="control-label" for="last_name">{{ trans('admin/users/form.last_name') }}</label>
 				<div class="controls">
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 
-			<!-- Email -->
+			{{-- Email --}}
 			<div class="control-group{{ $errors->has('email') ? ' error' : null }}">
 				<label class="control-label" for="email">{{ trans('admin/users/form.email') }}</label>
 				<div class="controls">
@@ -62,7 +62,7 @@
 				</div>
 			</div>
 
-			<!-- Password -->
+			{{-- Password --}}
 			<div class="control-group{{ $errors->has('password') ? ' error' : null }}">
 				<label class="control-label" for="password">{{ trans('admin/users/form.password') }}</label>
 				<div class="controls">
@@ -71,7 +71,7 @@
 				</div>
 			</div>
 
-			<!-- Password Confirm -->
+			{{-- Password Confirm --}}
 			<div class="control-group{{ $errors->has('password_confirm') ? ' error' : null }}">
 				<label class="control-label" for="password_confirm">{{ trans('admin/users/form.password_confirm') }}</label>
 				<div class="controls">
@@ -80,7 +80,7 @@
 				</div>
 			</div>
 
-			<!-- Activation Status -->
+			{{-- Activation Status --}}
 			<div class="control-group{{ $errors->has('activated') ? ' error' : null }}">
 				<label class="control-label" for="activated">{{ trans('admin/users/form.activated') }}</label>
 				<div class="controls">
@@ -92,7 +92,7 @@
 				</div>
 			</div>
 
-			<!-- Groups -->
+			{{-- Groups --}}
 			<div class="control-group{{ $errors->has('groups') ? ' error' : null }}">
 				<label class="control-label" for="groups">{{ trans('admin/users/form.groups') }}</label>
 				<div class="controls">
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 
-		<!-- Permissions tab -->
+		{{-- Permissions tab --}}
 		<div class="tab-pane" id="tab-permissions">
 			<div class="controls">
 				<div class="control-group">
@@ -151,7 +151,7 @@
 		</div>
 	</div>
 
-	<!-- Form Actions -->
+	{{-- Form Actions --}}
 	<div class="control-group">
 		<div class="controls">
 			<a class="btn btn-link" href="{{ route('users') }}">{{ trans('button.cancel') }}</a>

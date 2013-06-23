@@ -18,7 +18,7 @@
 	</h3>
 </div>
 
-<!-- Tabs -->
+{{-- Tabs --}}
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab-general" data-toggle="tab">{{ trans('admin/articles/general.tabs.general') }}</a></li>
 	<li><a href="#tab-meta-data" data-toggle="tab">{{ trans('admin/articles/general.tabs.metadata') }}</a></li>
@@ -28,14 +28,14 @@
 </ul>
 
 <form class="form-horizontal" method="post" action="" autocomplete="off">
-	<!-- CSRF Token -->
+	{{-- CSRF Token --}}
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-	<!-- Tabs Content -->
+	{{-- Tabs Content --}}
 	<div class="tab-content">
-		<!-- General tab -->
+		{{-- General tab --}}
 		<div class="tab-pane active" id="tab-general">
-			<!-- Article Title -->
+			{{-- Article Title --}}
 			<div class="control-group{{ $errors->has('title') ? ' error' : '' }}">
 				<label class="control-label" for="title">{{ trans('admin/articles/form.title') }}</label>
 				<div class="controls">
@@ -44,7 +44,7 @@
 				</div>
 			</div>
 
-			<!-- Article Slug -->
+			{{-- Article Slug --}}
 			<div class="control-group{{ $errors->has('slug') ? ' error' : '' }}">
 				<label class="control-label" for="slug">{{ trans('admin/articles/form.slug') }}</label>
 				<div class="controls">
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 
-			<!-- Content -->
+			{{-- Content --}}
 			<div class="control-group{{ $errors->has('content') ? ' error' : '' }}">
 				<label class="control-label" for="content">{{ trans('admin/articles/form.content') }}</label>
 				<div class="controls">
@@ -63,9 +63,9 @@
 			</div>
 		</div>
 
-		<!-- Meta Data tab -->
+		{{-- Meta Data tab --}}
 		<div class="tab-pane" id="tab-meta-data">
-			<!-- Meta Title -->
+			{{-- Meta Title --}}
 			<div class="control-group{{ $errors->has('meta-title') ? ' error' : '' }}">
 				<label class="control-label" for="meta-title">{{ trans('admin/articles/form.meta.title') }}</label>
 				<div class="controls">
@@ -74,7 +74,7 @@
 				</div>
 			</div>
 
-			<!-- Meta Description -->
+			{{-- Meta Description --}}
 			<div class="control-group{{ $errors->has('meta-description') ? ' error' : '' }}">
 				<label class="control-label" for="meta-description">{{ trans('admin/articles/form.meta.description') }}</label>
 				<div class="controls">
@@ -83,7 +83,7 @@
 				</div>
 			</div>
 
-			<!-- Meta Keywords -->
+			{{-- Meta Keywords --}}
 			<div class="control-group{{ $errors->has('meta-keywords') ? ' error' : '' }}">
 				<label class="control-label" for="meta-keywords">{{ trans('admin/articles/form.meta.keywords') }}</label>
 				<div class="controls">
@@ -94,13 +94,14 @@
 		</div>
 	</div>
 
-	<!-- Form Actions -->
+	{{-- Form Actions --}}
 	<div class="control-group">
 		<div class="controls">
 			<a class="btn btn-link" href="{{ route('articles') }}">{{ trans('button.cancel') }}</a>
 
 			<button type="reset" class="btn">{{ trans('button.reset') }}</button>
 
+			<button type="submit" class="btn btn-info">{{ trans('button.save_draft') }}</button>
 			<button type="submit" class="btn btn-success">{{ trans('button.publish') }}</button>
 		</div>
 	</div>

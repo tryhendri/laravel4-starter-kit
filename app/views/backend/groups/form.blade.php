@@ -18,21 +18,21 @@
 	</h3>
 </div>
 
-<!-- Tabs -->
+{{-- Tabs --}}
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab-general" data-toggle="tab">{{ trans('admin/groups/general.tabs.general') }}</a></li>
 	<li><a href="#tab-permissions" data-toggle="tab">{{ trans('admin/groups/general.tabs.permissions') }}</a></li>
 </ul>
 
 <form class="form-horizontal" method="post" action="" autocomplete="off">
-	<!-- CSRF Token -->
+	{{-- CSRF Token --}}
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-	<!-- Tabs Content -->
+	{{-- Tabs Content --}}
 	<div class="tab-content">
-		<!-- General tab -->
+		{{-- General tab --}}
 		<div class="tab-pane active" id="tab-general">
-			<!-- Name -->
+			{{-- Name --}}
 			<div class="control-group{{ $errors->has('name') ? ' error' : '' }}">
 				<label class="control-label" for="name">{{ trans('admin/groups/form.name') }}</label>
 				<div class="controls">
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 
-		<!-- Permissions tab -->
+		{{-- Permissions tab --}}
 		<div class="tab-pane" id="tab-permissions">
 			<div class="controls">
 				<div class="control-group">
@@ -79,7 +79,7 @@
 		</div>
 	</div>
 
-	<!-- Form Actions -->
+	{{-- Form Actions --}}
 	<div class="control-group">
 		<div class="controls">
 			<a class="btn btn-link" href="{{ route('groups') }}">{{ trans('button.cancel') }}</a>

@@ -2,4 +2,6 @@ body {
 	padding: 60px 0;
 }
 
-.unstyled:hover { text-decoration: none; }
+a.unstyled:hover { text-decoration: none; }
+
+table.unstyled td { border: none;}

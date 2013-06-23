@@ -5,15 +5,15 @@ return array(
 	'title' => 'Articles Management',
 
 	'create' => array(
-		'title' => 'Create Blog Article',
+		'title' => 'Create Article',
 	),
 
 	'update' => array(
-		'title' => 'Update Blog Article',
+		'title' => 'Update Article',
 	),
 
 	'copy' => array(
-		'title' => 'Copy Blog Article',
+		'title' => 'Copy Article',
 	),
 
 	'tabs' => array(

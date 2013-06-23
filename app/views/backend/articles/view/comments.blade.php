@@ -5,7 +5,7 @@
 
 <div class="page-header">
 	<h3>
-		{{ $article->title }}
+		Article Comments <small>{{ $article->title }}</small>
 
 		<div class="pull-right">
 			<a href="{{ route('article/update', $article->id) }}" class="btn btn-small btn-info"><i class="icon-circle-arrow-left icon-white"></i> Back to the Article</a>
@@ -16,15 +16,13 @@
 @if ( ! empty($comments))
 {{ $comments->links() }}
 
-<div class="row">
+<table class="table table-hover unstyled">
 @foreach ($comments as $comment)
-
-	<div class="span12">
-		<div class="row">
-			<div class="span1">
-				<img class="thumbnail" src="{{ $comment->author->gravatar() }}">
-			</div>
-			<div class="span11">
+	<tr>
+		<td class="span1">
+			<img class="thumbnail" src="{{ $comment->author->gravatar() }}">
+		</td>
+		<td class="span11">
 				<p>
 					<span class="muted">#{{ $comment->id }}</span>
 
@@ -33,13 +31,13 @@
 					<span class="tip" title="{{ $comment->created_at }}">&bull; {{ $comment->created_at->diffForHumans() }}</span>
 
 					<span class="pull-right">
-						<span class="icon-stack"><a href="{{ route('comment/update', array('id' => $comment->article_id, 'cid' => $comment->id)) }}" class="unstyled">
-
+						<a href="{{ route('comment/update', array('id' => $comment->article_id, 'cid' => $comment->id)) }}" class="unstyled tip" title="{{ trans('button.update') }}">
+							<span class="icon-stack">
 								<i class="icon-check-empty icon-stack-base"></i>
 								<i class="icon-pencil"></i>
-
-						</a></span>
-						<a href="{{ route('comment/delete', array('id' => $comment->article_id, 'cid' => $comment->id)) }}" class="unstyled">
+							</span>
+						</a>
+						<a href="{{ route('comment/delete', array('id' => $comment->article_id, 'cid' => $comment->id)) }}" class="unstyled tip" title="{{ trans('button.delete') }}">
 							<span class="icon-stack">
 								<i class="icon-check-empty icon-stack-base"></i>
 								<i class="icon-trash"></i>
@@ -51,12 +49,10 @@
 				<p>
 					{{{ Str::limit($comment->content, 300) }}}
 				</p>
-			</div>
-		</div>
-	</div>
-
+		</td>
+	</tr>
 @endforeach
-</div>
+</table>
 
 {{ $comments->links() }}
 @else

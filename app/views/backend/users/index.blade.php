@@ -48,10 +48,10 @@
 					</span>
 				</a>
 				@if ( ! is_null($user->deleted_at))
-				<a href="{{ route('user/restore', $user->id) }}" class="unstyled tip" title="{{ trans('button.delete') }}">
+				<a href="{{ route('user/restore', $user->id) }}" class="unstyled tip" title="{{ trans('button.restore') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
-						<i class="icon-trash"></i>
+						<i class="icon-external-link"></i>
 					</span>
 				</a>
 				@elseif (Sentry::getId() !== $user->id)

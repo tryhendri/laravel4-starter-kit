@@ -208,7 +208,7 @@ class UsersController extends AdminController {
 			if ( ! is_null($id))
 			{
 				// Get the user information
-				$user = Sentry::getUserProvider()->findById($id);
+				$user = Sentry::getUserProvider()->createModel()->withTrashed()->find($id);
 
 				// Get this user groups
 				$userGroups = $user->groups()->lists('name', 'group_id');

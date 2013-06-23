@@ -14,7 +14,7 @@
 	</h3>
 </div>
 
-<!-- Tabs -->
+{{-- Tabs --}}
 <ul class="nav nav-tabs">
 	<li><a href="{{ route('user/update', $user->id) }}">{{ trans('admin/users/general.tabs.general') }}</a></li>
 	<li><a href="{{ route('user/update', $user->id) }}">{{ trans('admin/users/general.tabs.permissions') }}</a></li>
