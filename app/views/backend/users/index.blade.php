@@ -39,7 +39,7 @@
 			<td>{{ $user->last_name }}</td>
 			<td>{{ $user->email }}</td>
 			<td>{{ trans('general.' . ($user->isActivated() ? 'yes' : 'no')) }}</td>
-			<td>{{ $user->created_at->diffForHumans() }}</td>
+			<td><span class="tip" title="{{ $user->created_at }}">{{ $user->created_at->diffForHumans() }}</span></td>
 			<td>
 				<a href="{{ route('user/update', $user->id) }}" class="unstyled tip" title="{{ trans('button.edit') }}">
 					<span class="icon-stack">
