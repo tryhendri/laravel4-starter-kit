@@ -28,7 +28,7 @@
 @section('content')
 <h3>{{{ $post->title }}}</h3>
 
-<p>{{ $post->content() }}</p>
+<p>{{{ $post->content() }}}</p>
 
 <div>
 	<span class="badge badge-info" title="{{ $post->created_at }}">Posted {{ $post->created_at->diffForHumans() }}</span>
@@ -54,7 +54,7 @@
 
 				<hr />
 
-				{{ $comment->content() }}
+				{{{ $comment->content() }}}
 			</div>
 		</div>
 	</div>
@@ -78,7 +78,7 @@ sorry mate
 
 	<!-- Comment -->
 	<div class="control-group{{ $errors->first('comment', ' error') }}">
-		<textarea class="input-block-level" rows="4" name="comment" id="comment">{{ Input::old('comment') }}</textarea>
+		<textarea class="input-block-level" rows="4" name="comment" id="comment">{{{ Input::old('comment') }}}</textarea>
 		{{ $errors->first('comment', '<span class="help-inline">:message</span>') }}
 	</div>
 
