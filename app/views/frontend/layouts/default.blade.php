@@ -19,7 +19,7 @@
 
 		<!-- CSS
 		================================================== -->
-		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
 
 		<style>
 		@section('styles')
@@ -107,7 +107,7 @@
 
 		<!-- Javascripts
 		================================================== -->
-		<script src="{{ asset('assets/js/jquery.v1.10.1.min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery/jquery.v1.10.1.min.js') }}"></script>
 		<script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('assets/js/application.js') }}"></script>
 

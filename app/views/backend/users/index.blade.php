@@ -13,7 +13,7 @@
 		{{ trans("admin/users/general.title") }}
 
 		<div class="pull-right">
-			<a href="{{ route('user/create') }}" class="btn btn-large btn-link"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
+			<a href="{{ route('user/create') }}" class="btn btn-large btn-link unstyled"><i class="icon-plus-sign icon-white"></i> {{ trans('button.create') }}</a>
 		</div>
 	</h3>
 </div>
