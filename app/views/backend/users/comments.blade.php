@@ -38,13 +38,13 @@
 			<td><a href="{{ route('article/update', $comment->article_id) }}">{{ $comment->article->title }}</a></td>
 			<td>{{ $comment->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('comment/update', $comment->id) }}" class="btn btn-link tip" title="{{ trans('button.edit') }}">
+				<a href="{{ route('comment/update', $comment->id) }}" class="unstyled tip" title="{{ trans('button.edit') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-pencil"></i>
 					</span>
 				</a>
-				<a href="{{ route('comment/delete', $comment->id) }}" class="btn btn-link tip" title="{{ trans('button.delete') }}">
+				<a href="{{ route('comment/delete', $comment->id) }}" class="unstyled tip" title="{{ trans('button.delete') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-trash"></i>

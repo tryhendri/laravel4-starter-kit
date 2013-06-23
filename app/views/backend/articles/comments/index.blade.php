@@ -18,7 +18,7 @@
 
 {{ $comments->links() }}
 
-<table class="table table-bordered table-striped table-hover">
+<table class="table table-striped table-hover">
 	<thead>
 		<tr>
 			<th class="span6">{{ trans('admin/articles/comments/table.article') }}</th>

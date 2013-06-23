@@ -22,11 +22,9 @@
 		<link href="{{ asset('assets/css/bootstrap/bootstrap.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/css/bootstrap/bootstrap-responsive.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/css/font-awesome/font-awesome.min.css') }}" rel="stylesheet" >
+		<link href="{{ asset('assets/css/application.css') }}" rel="stylesheet">
 		<style>
 		@section('styles')
-		body {
-			padding: 60px 0;
-		}
 		@show
 		</style>
 

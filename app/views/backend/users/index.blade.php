@@ -41,21 +41,21 @@
 			<td>{{ trans('general.' . ($user->isActivated() ? 'yes' : 'no')) }}</td>
 			<td>{{ $user->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('user/update', $user->id) }}" class="btn btn-link tip" title="{{ trans('button.edit') }}">
+				<a href="{{ route('user/update', $user->id) }}" class="unstyled tip" title="{{ trans('button.edit') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-pencil"></i>
 					</span>
 				</a>
 				@if ( ! is_null($user->deleted_at))
-				<a href="{{ route('user/restore', $user->id) }}" class="btn btn-link tip" title="{{ trans('button.delete') }}">
+				<a href="{{ route('user/restore', $user->id) }}" class="unstyled tip" title="{{ trans('button.delete') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-trash"></i>
 					</span>
 				</a>
 				@elseif (Sentry::getId() !== $user->id)
-				<a href="{{ route('user/delete', $user->id) }}" class="btn btn-link tip" title="{{ trans('button.delete') }}">
+				<a href="{{ route('user/delete', $user->id) }}" class="unstyled tip" title="{{ trans('button.delete') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-trash"></i>

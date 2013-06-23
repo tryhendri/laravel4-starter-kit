@@ -37,19 +37,19 @@
 			<td><a href="{{ route('article/comments', $article->id) }}">{{ $article->comments->count() }}</a></td>
 			<td>{{ $article->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('article/update', $article->id) }}" class="btn btn-link tip" title="{{ trans('button.edit') }}">
+				<a href="{{ route('article/update', $article->id) }}" class="unstyled tip" title="{{ trans('button.edit') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-pencil"></i>
 					</span>
 				</a>
-				<a href="{{ route('article/copy', $article->id) }}" class="btn btn-link tip" title="{{ trans('button.copy') }}">
+				<a href="{{ route('article/copy', $article->id) }}" class="unstyled tip" title="{{ trans('button.copy') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-copy"></i>
 					</span>
 				</a>
-				<a href="{{ route('article/delete', $article->id) }}" class="btn btn-link tip" title="{{ trans('button.delete') }}">
+				<a href="{{ route('article/delete', $article->id) }}" class="unstyled tip" title="{{ trans('button.delete') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-trash"></i>

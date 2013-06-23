@@ -37,13 +37,13 @@
 			<td>{{ $group->users()->count() }}</td>
 			<td>{{ $group->created_at->diffForHumans() }}</td>
 			<td>
-				<a href="{{ route('group/update', $group->id) }}" class="btn btn-link tip" title="{{ trans('button.edit') }}">
+				<a href="{{ route('group/update', $group->id) }}" class="unstyled tip" title="{{ trans('button.edit') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-pencil"></i>
 					</span>
 				</a>
-				<a href="{{ route('group/delete', $group->id) }}" class="btn btn-link tip" title="{{ trans('button.delete') }}">
+				<a href="{{ route('group/delete', $group->id) }}" class="unstyled tip" title="{{ trans('button.delete') }}">
 					<span class="icon-stack">
 						<i class="icon-check-empty icon-stack-base"></i>
 						<i class="icon-trash"></i>
@@ -54,7 +54,7 @@
 		@endforeach
 		@else
 		<tr>
-			<td colspan="5">{{ trans('table.no_results') }}</td>
+			<td colspan="4">{{ trans('table.no_results') }}</td>
 		</tr>
 		@endif
 	</tbody>
