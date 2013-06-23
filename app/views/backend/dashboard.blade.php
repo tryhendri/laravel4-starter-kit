@@ -8,7 +8,7 @@
 
 		<h3>
 			Latest Users
-			<small class="pull-right">View all</a></small>
+			<small class="pull-right"><a href="{{ route('users') }}">View all</a></small>
 		</h3>
 
 		<table class="table table-hover">
