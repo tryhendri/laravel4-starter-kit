@@ -9,7 +9,7 @@ packages, like the awesome [Sentry 2](https://github.com/cartalyst/sentry) packa
 
 ## Included goodies
 
-* Twitter Bootstrap 2.3.2
+* Twitter Bootstrap 3
 * jQuery 1.10.2
 * Custom CLI Installer
 * Custom Error Pages:
